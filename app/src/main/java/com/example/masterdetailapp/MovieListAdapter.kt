@@ -4,18 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class movieListAdapter (private var list: MutableList<Movie>, private val clickListener: (String) -> Unit)
-    : RecyclerView.Adapter<movieViewHolder>() {
+class MovieListAdapter (private var list: MutableList<Movie>, private val clickListener: (String) -> Unit)
+    : RecyclerView.Adapter<MovieViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): movieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item, parent, false)
-        return movieViewHolder(view)
+        return MovieViewHolder(view)
     }
 
     override fun getItemCount(): Int = list.size
 
-    override fun onBindViewHolder(holder: movieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(list[position], clickListener)
     }
 

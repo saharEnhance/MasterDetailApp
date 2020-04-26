@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         Movie("The Godfather", "1972"),
         Movie("The godfather:part||", "1974")
     )
+    private lateinit var adapter: MovieListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,13 +21,11 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
 
     }
-
-
     private fun initRecyclerView() {
 
         movieList.layoutManager = LinearLayoutManager(this)
-        movieList.adapter = movieListAdapter(movies as MutableList<Movie>) { movie : String -> partItemClicked(movie) }
-        //movieList.adapter = adapter
+        movieList.adapter = MovieListAdapter(movies as MutableList<Movie>) { movie : String -> partItemClicked(movie) }
+        movieList.adapter = adapter
     }
     private fun partItemClicked(movie: String) {
         Toast.makeText(this, "Clicked: $movie", Toast.LENGTH_LONG).show()
